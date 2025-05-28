@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h5>Отделение: {{ department }}</h5>
+<h5>Класс: {{ class_name }}</h5>
+
+<!-- Кнопка назад -->
+<a href="{{ url_for('select_class', department=department) }}" class="btn btn-secondary mb-3">Назад</a>
+
+<!-- Список нормативов -->
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="list-group">
+            {% for norm in normatives %}
+                <div class="list-group-item mb-2">
+                    <a href="{{ url_for('select_student', department=department, class_name=class_name, normative_id=norm['id']) }}" class="btn btn-outline-primary w-100">
+                        {{ norm['name'] }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Редактировать результат</h4>
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="result" class="form-label">Результат:</label>
+        <input type="number" step="any" class="form-control" id="result" name="result" value="{{ result.result_value }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+</form>
+
+<a href="{{ url_for('show_result_form', student_id=result.student_id, normative_id=result.normative_id) }}" class="btn btn-secondary mt-3">Назад</a>
+
+{% endblock %}

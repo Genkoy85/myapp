@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Верхняя панель с кнопками входа и регистрации -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex">
+        {% if not session.get('user_id') %}
+            <!-- Если пользователь не авторизован, выводим кнопки входа и регистрации -->
+            <div>
+                <a href="{{ url_for('login') }}" class="btn btn-primary btn-sm m-2">Войти</a>
+                <a href="{{ url_for('register') }}" class="btn btn-success btn-sm m-2">Регистрация</a>
+            </div>
+        {% endif %}
+    </div>
+
+    {% if session['role'] == 'admin' %}
+        <!-- Кнопка добавления нового администратора с уменьшенным размером -->
+        <a href="{{ url_for('add_admin') }}" class="btn btn-outline-success btn-sm m-2">Добавить нового администратора</a>
+    {% endif %}
+</div>
+
+<h3 class="text-center">Выберите отделение:</h3>
+<ul class="list-group">
+    {% for dept in departments %}
+    <li class="list-group-item">
+        <a href="{{ url_for('select_class', department=dept['department']) }}">{{ dept['department'] }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

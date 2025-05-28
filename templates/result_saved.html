@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h5>Результат сохранён!</h5>
+<p><strong>Ученик:</strong> {{ student.full_name }}</p>
+<p><strong>Норматив:</strong> {{ normative.name }}</p>
+<p><strong>Результат:</strong> {{ result }}</p>
+<p><strong>Оценка:</strong> {{ grade if grade else 'нет оценки' }}</p>
+
+<!-- Кнопка назад к ученику -->
+<a href="{{ url_for('show_result_form', student_id=student.id, normative_id=normative.id) }}" class="btn btn-primary">Назад к ученику</a>
+
+{% endblock %}

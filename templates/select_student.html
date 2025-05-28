@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h5>Класс: {{ class_name }}</h5>
+<h5>Норматив: {{ normative_name }}</h5>
+<a href="{{ url_for('select_normative', department=department, class_name=class_name) }}" class="btn btn-secondary mb-3">Назад</a>
+<div class="row row-cols-1 row-cols-md-2 g-2">
+    {% for student in students %}
+    <div class="col">
+        <a href="{{ url_for('show_result_form', student_id=student['id'], normative_id=normative_id) }}" class="btn btn-outline-primary w-100">
+            {{ student['full_name'].rsplit(' ', 1)[0] }}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<a href="{{ url_for('select_normative', department=department, class_name=class_name) }}" class="btn btn-secondary mt-3">Назад</a>
+{% endblock %}
