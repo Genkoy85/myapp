@@ -1,1 +1,2 @@
-# requirements.txt
+pip install flask pandas xlsxwriter openpyxl matplotlib
+
